@@ -1,0 +1,63 @@
+---
+title: "r_prg_midterm_03"
+author: "黃俊凱"
+date: "2017年1月20日"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+##資料概觀
+
+This is **Taipei house price**. I want to know the relationship between house price and house age.
+
+```{r}
+
+house <- read.csv("C:/Users/User/Desktop/house.csv", header = TRUE)
+
+str(house)
+
+summary(house)
+
+library(ggplot2)
+
+#散佈圖
+
+ggplot(house, aes(x = house_age, y = price, color = house_type))+
+  geom_point()+
+  ggtitle("House price v.s house age")+
+  xlab("Age")+
+  ylab("Price")+
+  geom_smooth(method = "lm")
+
+#線圖
+
+ggplot(house, aes(x = house_age, y = price, color = house_type))+
+  geom_point()+
+  geom_line()
+
+#直方圖
+
+ggplot(house, aes(x = house_age))+
+  geom_histogram()+
+  facet_wrap(~ area)
+
+#盒鬚圖
+
+ggplot(house, aes(x = house_age, y=price))+
+  geom_boxplot()+
+  facet_wrap(~ area)
+
+#長條圖
+
+library(plotly)
+
+house_plot <- ggplot(house, aes(house_type))+
+  geom_bar(aes(fill = area), position = "dodge")
+
+ggplotly(house_plot)
+
+
+```
