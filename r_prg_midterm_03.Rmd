@@ -1,7 +1,7 @@
 ---
 title: "r_prg_midterm_03"
-author: "¶À«T³Í"
-date: "2017¦~1¤ë20¤é"
+author: "é»ƒä¿Šå‡±"
+date: "2017å¹´1æœˆ20æ—¥"
 output: html_document
 ---
 
@@ -9,7 +9,7 @@ output: html_document
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-##¸ê®Æ·§Æ[
+##è³‡æ–™æ¦‚è§€
 
 This is **Taipei house price**. I want to know the relationship between house price and house age.
 
@@ -23,7 +23,7 @@ summary(house)
 
 library(ggplot2)
 
-#´²§G¹Ï
+#æ•£ä½ˆåœ–
 
 ggplot(house, aes(x = house_age, y = price, color = house_type))+
   geom_point()+
@@ -32,25 +32,25 @@ ggplot(house, aes(x = house_age, y = price, color = house_type))+
   ylab("Price")+
   geom_smooth(method = "lm")
 
-#½u¹Ï
+#ç·šåœ–
 
 ggplot(house, aes(x = house_age, y = price, color = house_type))+
   geom_point()+
   geom_line()
 
-#ª½¤è¹Ï
+#ç›´æ–¹åœ–
 
 ggplot(house, aes(x = house_age))+
   geom_histogram()+
   facet_wrap(~ area)
 
-#²°Å½¹Ï
+#ç›’é¬šåœ–
 
 ggplot(house, aes(x = house_age, y=price))+
   geom_boxplot()+
   facet_wrap(~ area)
 
-#ªø±ø¹Ï
+#é•·æ¢åœ–
 
 library(plotly)
 
@@ -58,6 +58,4 @@ house_plot <- ggplot(house, aes(house_type))+
   geom_bar(aes(fill = area), position = "dodge")
 
 ggplotly(house_plot)
-
-
 ```
